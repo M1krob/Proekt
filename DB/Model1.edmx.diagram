@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4be7eae7492a43aa9e297232401a74ed" Name="Diagram1">
+        <EntityTypeShape EntityType="ketoubazaModel.Группа" Width="1.5" PointX="3" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ketoubazaModel.Заявки" Width="1.5" PointX="10" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ketoubazaModel.ИД_Специальность" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ketoubazaModel.ИД_Статус_заявления" Width="1.5" PointX="7.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ketoubazaModel.Преподаватель" Width="1.5" PointX="3" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ketoubazaModel.Сотрудники" Width="1.5" PointX="8" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="ketoubazaModel.Статус_студента" Width="1.5" PointX="3" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ketoubazaModel.Студент" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ketoubazaModel.Тип_сотрудники" Width="1.5" PointX="5.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ketoubazaModel.Форма_обучения" Width="1.5" PointX="3" PointY="13.125" IsExpanded="true" />
+        <AssociationConnector Association="ketoubazaModel.FK_Группа_ИД_Специальность" ManuallyRouted="false" />
+        <AssociationConnector Association="ketoubazaModel.FK_Студент_Группа" ManuallyRouted="false" />
+        <AssociationConnector Association="ketoubazaModel.FK_Заявки_ИД_Статус_заявления" ManuallyRouted="false" />
+        <AssociationConnector Association="ketoubazaModel.FK_Студент_ИД_Специальность" ManuallyRouted="false" />
+        <AssociationConnector Association="ketoubazaModel.FK_Студент_Преподаватель" ManuallyRouted="false" />
+        <AssociationConnector Association="ketoubazaModel.FK_Сотрудники_Тип_сотрудники" ManuallyRouted="false" />
+        <AssociationConnector Association="ketoubazaModel.FK_Студент_Статус_студента" ManuallyRouted="false" />
+        <AssociationConnector Association="ketoubazaModel.FK_Студент_Форма_обучения" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,678 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище ketoubazaModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Группа">
+          <Key>
+            <PropertyRef Name="ИД_Группа" />
+          </Key>
+          <Property Name="ИД_Группа" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ИД_Специальность" Type="int" Nullable="false" />
+          <Property Name="Количество_студентов" Type="int" Nullable="false" />
+          <Property Name="Количество_свободных_мест" Type="int" />
+          <Property Name="Префикс_группы" Type="nvarchar" MaxLength="1" />
+          <Property Name="Курс" Type="nchar" MaxLength="1" />
+          <Property Name="Дата_формирования" Type="date" />
+          <Property Name="Дата_окончания" Type="date" />
+          <Property Name="Классный_руководитель" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Заявки">
+          <Key>
+            <PropertyRef Name="ИД_Заявка" />
+          </Key>
+          <Property Name="ИД_Заявка" Type="int" Nullable="false" />
+          <Property Name="Фамилия" Type="nvarchar" MaxLength="50" />
+          <Property Name="Имя" Type="nvarchar" MaxLength="50" />
+          <Property Name="Отчество" Type="nvarchar" MaxLength="50" />
+          <Property Name="Дата_рождения" Type="date" />
+          <Property Name="Место_обучения" Type="nvarchar" MaxLength="50" />
+          <Property Name="Аттестат" Type="nvarchar(max)" />
+          <Property Name="Номер_телефона" Type="nchar" MaxLength="11" />
+          <Property Name="Электронная_почта" Type="nvarchar" MaxLength="50" />
+          <Property Name="ИД_Статус_заявления" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ИД_Специальность">
+          <Key>
+            <PropertyRef Name="ИД_Специальность" />
+          </Key>
+          <Property Name="ИД_Специальность" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Название" Type="nvarchar" MaxLength="50" />
+          <Property Name="Код" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ИД_Статус_заявления">
+          <Key>
+            <PropertyRef Name="ИД_Статус_заявления" />
+          </Key>
+          <Property Name="ИД_Статус_заявления" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Статус" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Преподаватель">
+          <Key>
+            <PropertyRef Name="ИД_Преподаватели" />
+          </Key>
+          <Property Name="ИД_Преподаватели" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Фамилия" Type="nvarchar" MaxLength="50" />
+          <Property Name="Имя" Type="nvarchar" MaxLength="50" />
+          <Property Name="Отчество" Type="nvarchar" MaxLength="50" />
+          <Property Name="Дата_рождения" Type="date" />
+          <Property Name="Электронная_почта" Type="nvarchar" MaxLength="50" />
+          <Property Name="Номер_телефона" Type="nchar" MaxLength="11" />
+          <Property Name="Педагогический_стаж" Type="nchar" MaxLength="100" />
+          <Property Name="Изображение" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Сотрудники">
+          <Key>
+            <PropertyRef Name="ИД_Сотрудники" />
+          </Key>
+          <Property Name="ИД_Сотрудники" Type="int" Nullable="false" />
+          <Property Name="Фамилия" Type="nvarchar" MaxLength="50" />
+          <Property Name="Имя" Type="nvarchar" MaxLength="50" />
+          <Property Name="Отчество" Type="nvarchar" MaxLength="50" />
+          <Property Name="Логин" Type="nvarchar" MaxLength="50" />
+          <Property Name="Пароль" Type="nchar" MaxLength="10" />
+          <Property Name="ИД_Тип_сотрудника" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Статус_студента">
+          <Key>
+            <PropertyRef Name="ИД_Статус_студента" />
+          </Key>
+          <Property Name="ИД_Статус_студента" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Статус" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Студент">
+          <Key>
+            <PropertyRef Name="ИД_Студент" />
+          </Key>
+          <Property Name="ИД_Студент" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Фамилия" Type="nvarchar" MaxLength="50" />
+          <Property Name="Имя" Type="nvarchar" MaxLength="50" />
+          <Property Name="Отчество" Type="nvarchar" MaxLength="50" />
+          <Property Name="Дата_рождения" Type="date" />
+          <Property Name="ИД_Группа" Type="int" Nullable="false" />
+          <Property Name="ИД_Статус_студента" Type="int" Nullable="false" />
+          <Property Name="ИД_Форма_обучения" Type="int" Nullable="false" />
+          <Property Name="Дата_зачисления" Type="date" />
+          <Property Name="Дата_выбытия" Type="date" />
+          <Property Name="Номер_телефона" Type="nchar" MaxLength="11" />
+          <Property Name="Изображение" Type="nvarchar(max)" />
+          <Property Name="ИД_Специальность" Type="int" Nullable="false" />
+          <Property Name="ИД_Преподаватель" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Тип_сотрудники">
+          <Key>
+            <PropertyRef Name="ИД_Тип_сотрудники" />
+          </Key>
+          <Property Name="ИД_Тип_сотрудники" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Название" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Форма_обучения">
+          <Key>
+            <PropertyRef Name="ИД_Форма_обучения" />
+          </Key>
+          <Property Name="ИД_Форма_обучения" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Название" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Группа_ИД_Специальность">
+          <End Role="ИД_Специальность" Type="Self.ИД_Специальность" Multiplicity="1" />
+          <End Role="Группа" Type="Self.Группа" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ИД_Специальность">
+              <PropertyRef Name="ИД_Специальность" />
+            </Principal>
+            <Dependent Role="Группа">
+              <PropertyRef Name="ИД_Специальность" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Заявки_ИД_Статус_заявления">
+          <End Role="ИД_Статус_заявления" Type="Self.ИД_Статус_заявления" Multiplicity="1" />
+          <End Role="Заявки" Type="Self.Заявки" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ИД_Статус_заявления">
+              <PropertyRef Name="ИД_Статус_заявления" />
+            </Principal>
+            <Dependent Role="Заявки">
+              <PropertyRef Name="ИД_Статус_заявления" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Сотрудники_Тип_сотрудники">
+          <End Role="Тип_сотрудники" Type="Self.Тип_сотрудники" Multiplicity="1" />
+          <End Role="Сотрудники" Type="Self.Сотрудники" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Тип_сотрудники">
+              <PropertyRef Name="ИД_Тип_сотрудники" />
+            </Principal>
+            <Dependent Role="Сотрудники">
+              <PropertyRef Name="ИД_Тип_сотрудника" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Студент_Группа">
+          <End Role="Группа" Type="Self.Группа" Multiplicity="1" />
+          <End Role="Студент" Type="Self.Студент" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Группа">
+              <PropertyRef Name="ИД_Группа" />
+            </Principal>
+            <Dependent Role="Студент">
+              <PropertyRef Name="ИД_Группа" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Студент_ИД_Специальность">
+          <End Role="ИД_Специальность" Type="Self.ИД_Специальность" Multiplicity="1" />
+          <End Role="Студент" Type="Self.Студент" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ИД_Специальность">
+              <PropertyRef Name="ИД_Специальность" />
+            </Principal>
+            <Dependent Role="Студент">
+              <PropertyRef Name="ИД_Специальность" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Студент_Преподаватель">
+          <End Role="Преподаватель" Type="Self.Преподаватель" Multiplicity="1" />
+          <End Role="Студент" Type="Self.Студент" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Преподаватель">
+              <PropertyRef Name="ИД_Преподаватели" />
+            </Principal>
+            <Dependent Role="Студент">
+              <PropertyRef Name="ИД_Преподаватель" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Студент_Статус_студента">
+          <End Role="Статус_студента" Type="Self.Статус_студента" Multiplicity="1" />
+          <End Role="Студент" Type="Self.Студент" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Статус_студента">
+              <PropertyRef Name="ИД_Статус_студента" />
+            </Principal>
+            <Dependent Role="Студент">
+              <PropertyRef Name="ИД_Статус_студента" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Студент_Форма_обучения">
+          <End Role="Форма_обучения" Type="Self.Форма_обучения" Multiplicity="1" />
+          <End Role="Студент" Type="Self.Студент" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Форма_обучения">
+              <PropertyRef Name="ИД_Форма_обучения" />
+            </Principal>
+            <Dependent Role="Студент">
+              <PropertyRef Name="ИД_Форма_обучения" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище ketoubazaModelContainer">
+          <EntitySet Name="Группа" EntityType="Self.Группа" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Заявки" EntityType="Self.Заявки" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ИД_Специальность" EntityType="Self.ИД_Специальность" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ИД_Статус_заявления" EntityType="Self.ИД_Статус_заявления" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Преподаватель" EntityType="Self.Преподаватель" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Сотрудники" EntityType="Self.Сотрудники" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Статус_студента" EntityType="Self.Статус_студента" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Студент" EntityType="Self.Студент" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Тип_сотрудники" EntityType="Self.Тип_сотрудники" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Форма_обучения" EntityType="Self.Форма_обучения" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Группа_ИД_Специальность" Association="Self.FK_Группа_ИД_Специальность">
+            <End Role="ИД_Специальность" EntitySet="ИД_Специальность" />
+            <End Role="Группа" EntitySet="Группа" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Заявки_ИД_Статус_заявления" Association="Self.FK_Заявки_ИД_Статус_заявления">
+            <End Role="ИД_Статус_заявления" EntitySet="ИД_Статус_заявления" />
+            <End Role="Заявки" EntitySet="Заявки" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Сотрудники_Тип_сотрудники" Association="Self.FK_Сотрудники_Тип_сотрудники">
+            <End Role="Тип_сотрудники" EntitySet="Тип_сотрудники" />
+            <End Role="Сотрудники" EntitySet="Сотрудники" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Студент_Группа" Association="Self.FK_Студент_Группа">
+            <End Role="Группа" EntitySet="Группа" />
+            <End Role="Студент" EntitySet="Студент" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Студент_ИД_Специальность" Association="Self.FK_Студент_ИД_Специальность">
+            <End Role="ИД_Специальность" EntitySet="ИД_Специальность" />
+            <End Role="Студент" EntitySet="Студент" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Студент_Преподаватель" Association="Self.FK_Студент_Преподаватель">
+            <End Role="Преподаватель" EntitySet="Преподаватель" />
+            <End Role="Студент" EntitySet="Студент" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Студент_Статус_студента" Association="Self.FK_Студент_Статус_студента">
+            <End Role="Статус_студента" EntitySet="Статус_студента" />
+            <End Role="Студент" EntitySet="Студент" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Студент_Форма_обучения" Association="Self.FK_Студент_Форма_обучения">
+            <End Role="Форма_обучения" EntitySet="Форма_обучения" />
+            <End Role="Студент" EntitySet="Студент" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ketoubazaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Группа">
+          <Key>
+            <PropertyRef Name="ИД_Группа" />
+          </Key>
+          <Property Name="ИД_Группа" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ИД_Специальность" Type="Int32" Nullable="false" />
+          <Property Name="Количество_студентов" Type="Int32" Nullable="false" />
+          <Property Name="Количество_свободных_мест" Type="Int32" />
+          <Property Name="Префикс_группы" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="Курс" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="Дата_формирования" Type="DateTime" Precision="0" />
+          <Property Name="Дата_окончания" Type="DateTime" Precision="0" />
+          <Property Name="Классный_руководитель" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ИД_Специальность1" Relationship="Self.FK_Группа_ИД_Специальность" FromRole="Группа" ToRole="ИД_Специальность" />
+          <NavigationProperty Name="Студент" Relationship="Self.FK_Студент_Группа" FromRole="Группа" ToRole="Студент" />
+        </EntityType>
+        <EntityType Name="Заявки">
+          <Key>
+            <PropertyRef Name="ИД_Заявка" />
+          </Key>
+          <Property Name="ИД_Заявка" Type="Int32" Nullable="false" />
+          <Property Name="Фамилия" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Имя" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Отчество" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Дата_рождения" Type="DateTime" Precision="0" />
+          <Property Name="Место_обучения" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Аттестат" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Номер_телефона" Type="String" MaxLength="11" FixedLength="true" Unicode="true" />
+          <Property Name="Электронная_почта" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ИД_Статус_заявления" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="ИД_Статус_заявления1" Relationship="Self.FK_Заявки_ИД_Статус_заявления" FromRole="Заявки" ToRole="ИД_Статус_заявления" />
+        </EntityType>
+        <EntityType Name="ИД_Специальность">
+          <Key>
+            <PropertyRef Name="ИД_Специальность1" />
+          </Key>
+          <Property Name="ИД_Специальность1" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Название" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Код" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Группа" Relationship="Self.FK_Группа_ИД_Специальность" FromRole="ИД_Специальность" ToRole="Группа" />
+          <NavigationProperty Name="Студент" Relationship="Self.FK_Студент_ИД_Специальность" FromRole="ИД_Специальность" ToRole="Студент" />
+        </EntityType>
+        <EntityType Name="ИД_Статус_заявления">
+          <Key>
+            <PropertyRef Name="ИД_Статус_заявления1" />
+          </Key>
+          <Property Name="ИД_Статус_заявления1" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Статус" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Заявки" Relationship="Self.FK_Заявки_ИД_Статус_заявления" FromRole="ИД_Статус_заявления" ToRole="Заявки" />
+        </EntityType>
+        <EntityType Name="Преподаватель">
+          <Key>
+            <PropertyRef Name="ИД_Преподаватели" />
+          </Key>
+          <Property Name="ИД_Преподаватели" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Фамилия" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Имя" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Отчество" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Дата_рождения" Type="DateTime" Precision="0" />
+          <Property Name="Электронная_почта" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Номер_телефона" Type="String" MaxLength="11" FixedLength="true" Unicode="true" />
+          <Property Name="Педагогический_стаж" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="Изображение" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Студент" Relationship="Self.FK_Студент_Преподаватель" FromRole="Преподаватель" ToRole="Студент" />
+        </EntityType>
+        <EntityType Name="Сотрудники">
+          <Key>
+            <PropertyRef Name="ИД_Сотрудники" />
+          </Key>
+          <Property Name="ИД_Сотрудники" Type="Int32" Nullable="false" />
+          <Property Name="Фамилия" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Имя" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Отчество" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Логин" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Пароль" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="ИД_Тип_сотрудника" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Тип_сотрудники" Relationship="Self.FK_Сотрудники_Тип_сотрудники" FromRole="Сотрудники" ToRole="Тип_сотрудники" />
+        </EntityType>
+        <EntityType Name="Статус_студента">
+          <Key>
+            <PropertyRef Name="ИД_Статус_студента" />
+          </Key>
+          <Property Name="ИД_Статус_студента" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Статус" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Студент" Relationship="Self.FK_Студент_Статус_студента" FromRole="Статус_студента" ToRole="Студент" />
+        </EntityType>
+        <EntityType Name="Студент">
+          <Key>
+            <PropertyRef Name="ИД_Студент" />
+          </Key>
+          <Property Name="ИД_Студент" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Фамилия" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Имя" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Отчество" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Дата_рождения" Type="DateTime" Precision="0" />
+          <Property Name="ИД_Группа" Type="Int32" Nullable="false" />
+          <Property Name="ИД_Статус_студента" Type="Int32" Nullable="false" />
+          <Property Name="ИД_Форма_обучения" Type="Int32" Nullable="false" />
+          <Property Name="Дата_зачисления" Type="DateTime" Precision="0" />
+          <Property Name="Дата_выбытия" Type="DateTime" Precision="0" />
+          <Property Name="Номер_телефона" Type="String" MaxLength="11" FixedLength="true" Unicode="true" />
+          <Property Name="Изображение" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ИД_Специальность" Type="Int32" Nullable="false" />
+          <Property Name="ИД_Преподаватель" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Группа" Relationship="Self.FK_Студент_Группа" FromRole="Студент" ToRole="Группа" />
+          <NavigationProperty Name="ИД_Специальность1" Relationship="Self.FK_Студент_ИД_Специальность" FromRole="Студент" ToRole="ИД_Специальность" />
+          <NavigationProperty Name="Преподаватель" Relationship="Self.FK_Студент_Преподаватель" FromRole="Студент" ToRole="Преподаватель" />
+          <NavigationProperty Name="Статус_студента" Relationship="Self.FK_Студент_Статус_студента" FromRole="Студент" ToRole="Статус_студента" />
+          <NavigationProperty Name="Форма_обучения" Relationship="Self.FK_Студент_Форма_обучения" FromRole="Студент" ToRole="Форма_обучения" />
+        </EntityType>
+        <EntityType Name="Тип_сотрудники">
+          <Key>
+            <PropertyRef Name="ИД_Тип_сотрудники" />
+          </Key>
+          <Property Name="ИД_Тип_сотрудники" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Название" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Сотрудники" Relationship="Self.FK_Сотрудники_Тип_сотрудники" FromRole="Тип_сотрудники" ToRole="Сотрудники" />
+        </EntityType>
+        <EntityType Name="Форма_обучения">
+          <Key>
+            <PropertyRef Name="ИД_Форма_обучения" />
+          </Key>
+          <Property Name="ИД_Форма_обучения" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Название" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Студент" Relationship="Self.FK_Студент_Форма_обучения" FromRole="Форма_обучения" ToRole="Студент" />
+        </EntityType>
+        <Association Name="FK_Группа_ИД_Специальность">
+          <End Role="ИД_Специальность" Type="Self.ИД_Специальность" Multiplicity="1" />
+          <End Role="Группа" Type="Self.Группа" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ИД_Специальность">
+              <PropertyRef Name="ИД_Специальность1" />
+            </Principal>
+            <Dependent Role="Группа">
+              <PropertyRef Name="ИД_Специальность" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Студент_Группа">
+          <End Role="Группа" Type="Self.Группа" Multiplicity="1" />
+          <End Role="Студент" Type="Self.Студент" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Группа">
+              <PropertyRef Name="ИД_Группа" />
+            </Principal>
+            <Dependent Role="Студент">
+              <PropertyRef Name="ИД_Группа" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Заявки_ИД_Статус_заявления">
+          <End Role="ИД_Статус_заявления" Type="Self.ИД_Статус_заявления" Multiplicity="1" />
+          <End Role="Заявки" Type="Self.Заявки" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ИД_Статус_заявления">
+              <PropertyRef Name="ИД_Статус_заявления1" />
+            </Principal>
+            <Dependent Role="Заявки">
+              <PropertyRef Name="ИД_Статус_заявления" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Студент_ИД_Специальность">
+          <End Role="ИД_Специальность" Type="Self.ИД_Специальность" Multiplicity="1" />
+          <End Role="Студент" Type="Self.Студент" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ИД_Специальность">
+              <PropertyRef Name="ИД_Специальность1" />
+            </Principal>
+            <Dependent Role="Студент">
+              <PropertyRef Name="ИД_Специальность" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Студент_Преподаватель">
+          <End Role="Преподаватель" Type="Self.Преподаватель" Multiplicity="1" />
+          <End Role="Студент" Type="Self.Студент" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Преподаватель">
+              <PropertyRef Name="ИД_Преподаватели" />
+            </Principal>
+            <Dependent Role="Студент">
+              <PropertyRef Name="ИД_Преподаватель" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Сотрудники_Тип_сотрудники">
+          <End Role="Тип_сотрудники" Type="Self.Тип_сотрудники" Multiplicity="1" />
+          <End Role="Сотрудники" Type="Self.Сотрудники" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Тип_сотрудники">
+              <PropertyRef Name="ИД_Тип_сотрудники" />
+            </Principal>
+            <Dependent Role="Сотрудники">
+              <PropertyRef Name="ИД_Тип_сотрудника" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Студент_Статус_студента">
+          <End Role="Статус_студента" Type="Self.Статус_студента" Multiplicity="1" />
+          <End Role="Студент" Type="Self.Студент" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Статус_студента">
+              <PropertyRef Name="ИД_Статус_студента" />
+            </Principal>
+            <Dependent Role="Студент">
+              <PropertyRef Name="ИД_Статус_студента" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Студент_Форма_обучения">
+          <End Role="Форма_обучения" Type="Self.Форма_обучения" Multiplicity="1" />
+          <End Role="Студент" Type="Self.Студент" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Форма_обучения">
+              <PropertyRef Name="ИД_Форма_обучения" />
+            </Principal>
+            <Dependent Role="Студент">
+              <PropertyRef Name="ИД_Форма_обучения" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="bazaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Группа" EntityType="Self.Группа" />
+          <EntitySet Name="Заявки" EntityType="Self.Заявки" />
+          <EntitySet Name="ИД_Специальность" EntityType="Self.ИД_Специальность" />
+          <EntitySet Name="ИД_Статус_заявления" EntityType="Self.ИД_Статус_заявления" />
+          <EntitySet Name="Преподаватель" EntityType="Self.Преподаватель" />
+          <EntitySet Name="Сотрудники" EntityType="Self.Сотрудники" />
+          <EntitySet Name="Статус_студента" EntityType="Self.Статус_студента" />
+          <EntitySet Name="Студент" EntityType="Self.Студент" />
+          <EntitySet Name="Тип_сотрудники" EntityType="Self.Тип_сотрудники" />
+          <EntitySet Name="Форма_обучения" EntityType="Self.Форма_обучения" />
+          <AssociationSet Name="FK_Группа_ИД_Специальность" Association="Self.FK_Группа_ИД_Специальность">
+            <End Role="ИД_Специальность" EntitySet="ИД_Специальность" />
+            <End Role="Группа" EntitySet="Группа" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Студент_Группа" Association="Self.FK_Студент_Группа">
+            <End Role="Группа" EntitySet="Группа" />
+            <End Role="Студент" EntitySet="Студент" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Заявки_ИД_Статус_заявления" Association="Self.FK_Заявки_ИД_Статус_заявления">
+            <End Role="ИД_Статус_заявления" EntitySet="ИД_Статус_заявления" />
+            <End Role="Заявки" EntitySet="Заявки" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Студент_ИД_Специальность" Association="Self.FK_Студент_ИД_Специальность">
+            <End Role="ИД_Специальность" EntitySet="ИД_Специальность" />
+            <End Role="Студент" EntitySet="Студент" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Студент_Преподаватель" Association="Self.FK_Студент_Преподаватель">
+            <End Role="Преподаватель" EntitySet="Преподаватель" />
+            <End Role="Студент" EntitySet="Студент" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Сотрудники_Тип_сотрудники" Association="Self.FK_Сотрудники_Тип_сотрудники">
+            <End Role="Тип_сотрудники" EntitySet="Тип_сотрудники" />
+            <End Role="Сотрудники" EntitySet="Сотрудники" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Студент_Статус_студента" Association="Self.FK_Студент_Статус_студента">
+            <End Role="Статус_студента" EntitySet="Статус_студента" />
+            <End Role="Студент" EntitySet="Студент" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Студент_Форма_обучения" Association="Self.FK_Студент_Форма_обучения">
+            <End Role="Форма_обучения" EntitySet="Форма_обучения" />
+            <End Role="Студент" EntitySet="Студент" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ketoubazaModelContainer" CdmEntityContainer="bazaEntities">
+          <EntitySetMapping Name="Группа">
+            <EntityTypeMapping TypeName="ketoubazaModel.Группа">
+              <MappingFragment StoreEntitySet="Группа">
+                <ScalarProperty Name="ИД_Группа" ColumnName="ИД_Группа" />
+                <ScalarProperty Name="ИД_Специальность" ColumnName="ИД_Специальность" />
+                <ScalarProperty Name="Количество_студентов" ColumnName="Количество_студентов" />
+                <ScalarProperty Name="Количество_свободных_мест" ColumnName="Количество_свободных_мест" />
+                <ScalarProperty Name="Префикс_группы" ColumnName="Префикс_группы" />
+                <ScalarProperty Name="Курс" ColumnName="Курс" />
+                <ScalarProperty Name="Дата_формирования" ColumnName="Дата_формирования" />
+                <ScalarProperty Name="Дата_окончания" ColumnName="Дата_окончания" />
+                <ScalarProperty Name="Классный_руководитель" ColumnName="Классный_руководитель" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Заявки">
+            <EntityTypeMapping TypeName="ketoubazaModel.Заявки">
+              <MappingFragment StoreEntitySet="Заявки">
+                <ScalarProperty Name="ИД_Заявка" ColumnName="ИД_Заявка" />
+                <ScalarProperty Name="Фамилия" ColumnName="Фамилия" />
+                <ScalarProperty Name="Имя" ColumnName="Имя" />
+                <ScalarProperty Name="Отчество" ColumnName="Отчество" />
+                <ScalarProperty Name="Дата_рождения" ColumnName="Дата_рождения" />
+                <ScalarProperty Name="Место_обучения" ColumnName="Место_обучения" />
+                <ScalarProperty Name="Аттестат" ColumnName="Аттестат" />
+                <ScalarProperty Name="Номер_телефона" ColumnName="Номер_телефона" />
+                <ScalarProperty Name="Электронная_почта" ColumnName="Электронная_почта" />
+                <ScalarProperty Name="ИД_Статус_заявления" ColumnName="ИД_Статус_заявления" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ИД_Специальность">
+            <EntityTypeMapping TypeName="ketoubazaModel.ИД_Специальность">
+              <MappingFragment StoreEntitySet="ИД_Специальность">
+                <ScalarProperty Name="ИД_Специальность1" ColumnName="ИД_Специальность" />
+                <ScalarProperty Name="Название" ColumnName="Название" />
+                <ScalarProperty Name="Код" ColumnName="Код" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ИД_Статус_заявления">
+            <EntityTypeMapping TypeName="ketoubazaModel.ИД_Статус_заявления">
+              <MappingFragment StoreEntitySet="ИД_Статус_заявления">
+                <ScalarProperty Name="ИД_Статус_заявления1" ColumnName="ИД_Статус_заявления" />
+                <ScalarProperty Name="Статус" ColumnName="Статус" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Преподаватель">
+            <EntityTypeMapping TypeName="ketoubazaModel.Преподаватель">
+              <MappingFragment StoreEntitySet="Преподаватель">
+                <ScalarProperty Name="ИД_Преподаватели" ColumnName="ИД_Преподаватели" />
+                <ScalarProperty Name="Фамилия" ColumnName="Фамилия" />
+                <ScalarProperty Name="Имя" ColumnName="Имя" />
+                <ScalarProperty Name="Отчество" ColumnName="Отчество" />
+                <ScalarProperty Name="Дата_рождения" ColumnName="Дата_рождения" />
+                <ScalarProperty Name="Электронная_почта" ColumnName="Электронная_почта" />
+                <ScalarProperty Name="Номер_телефона" ColumnName="Номер_телефона" />
+                <ScalarProperty Name="Педагогический_стаж" ColumnName="Педагогический_стаж" />
+                <ScalarProperty Name="Изображение" ColumnName="Изображение" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Сотрудники">
+            <EntityTypeMapping TypeName="ketoubazaModel.Сотрудники">
+              <MappingFragment StoreEntitySet="Сотрудники">
+                <ScalarProperty Name="ИД_Сотрудники" ColumnName="ИД_Сотрудники" />
+                <ScalarProperty Name="Фамилия" ColumnName="Фамилия" />
+                <ScalarProperty Name="Имя" ColumnName="Имя" />
+                <ScalarProperty Name="Отчество" ColumnName="Отчество" />
+                <ScalarProperty Name="Логин" ColumnName="Логин" />
+                <ScalarProperty Name="Пароль" ColumnName="Пароль" />
+                <ScalarProperty Name="ИД_Тип_сотрудника" ColumnName="ИД_Тип_сотрудника" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Статус_студента">
+            <EntityTypeMapping TypeName="ketoubazaModel.Статус_студента">
+              <MappingFragment StoreEntitySet="Статус_студента">
+                <ScalarProperty Name="ИД_Статус_студента" ColumnName="ИД_Статус_студента" />
+                <ScalarProperty Name="Статус" ColumnName="Статус" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Студент">
+            <EntityTypeMapping TypeName="ketoubazaModel.Студент">
+              <MappingFragment StoreEntitySet="Студент">
+                <ScalarProperty Name="ИД_Студент" ColumnName="ИД_Студент" />
+                <ScalarProperty Name="Фамилия" ColumnName="Фамилия" />
+                <ScalarProperty Name="Имя" ColumnName="Имя" />
+                <ScalarProperty Name="Отчество" ColumnName="Отчество" />
+                <ScalarProperty Name="Дата_рождения" ColumnName="Дата_рождения" />
+                <ScalarProperty Name="ИД_Группа" ColumnName="ИД_Группа" />
+                <ScalarProperty Name="ИД_Статус_студента" ColumnName="ИД_Статус_студента" />
+                <ScalarProperty Name="ИД_Форма_обучения" ColumnName="ИД_Форма_обучения" />
+                <ScalarProperty Name="Дата_зачисления" ColumnName="Дата_зачисления" />
+                <ScalarProperty Name="Дата_выбытия" ColumnName="Дата_выбытия" />
+                <ScalarProperty Name="Номер_телефона" ColumnName="Номер_телефона" />
+                <ScalarProperty Name="Изображение" ColumnName="Изображение" />
+                <ScalarProperty Name="ИД_Специальность" ColumnName="ИД_Специальность" />
+                <ScalarProperty Name="ИД_Преподаватель" ColumnName="ИД_Преподаватель" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Тип_сотрудники">
+            <EntityTypeMapping TypeName="ketoubazaModel.Тип_сотрудники">
+              <MappingFragment StoreEntitySet="Тип_сотрудники">
+                <ScalarProperty Name="ИД_Тип_сотрудники" ColumnName="ИД_Тип_сотрудники" />
+                <ScalarProperty Name="Название" ColumnName="Название" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Форма_обучения">
+            <EntityTypeMapping TypeName="ketoubazaModel.Форма_обучения">
+              <MappingFragment StoreEntitySet="Форма_обучения">
+                <ScalarProperty Name="ИД_Форма_обучения" ColumnName="ИД_Форма_обучения" />
+                <ScalarProperty Name="Название" ColumnName="Название" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
