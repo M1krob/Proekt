@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище ketoubazaModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище ketoubazaModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Группа">
           <Key>
             <PropertyRef Name="ИД_Группа" />
@@ -74,6 +74,7 @@
           <Property Name="Логин" Type="nvarchar" MaxLength="50" />
           <Property Name="Пароль" Type="nchar" MaxLength="10" />
           <Property Name="ИД_Тип_сотрудника" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Почта" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Статус_студента">
           <Key>
@@ -255,8 +256,7 @@
             <End Role="Студент" EntitySet="Студент" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ketoubazaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -337,6 +337,7 @@
           <Property Name="Пароль" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="ИД_Тип_сотрудника" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="Тип_сотрудники" Relationship="Self.FK_Сотрудники_Тип_сотрудники" FromRole="Сотрудники" ToRole="Тип_сотрудники" />
+          <Property Name="Почта" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Статус_студента">
           <Key>
@@ -598,6 +599,7 @@
           <EntitySetMapping Name="Сотрудники">
             <EntityTypeMapping TypeName="ketoubazaModel.Сотрудники">
               <MappingFragment StoreEntitySet="Сотрудники">
+                <ScalarProperty Name="Почта" ColumnName="Почта" />
                 <ScalarProperty Name="ИД_Сотрудники" ColumnName="ИД_Сотрудники" />
                 <ScalarProperty Name="Фамилия" ColumnName="Фамилия" />
                 <ScalarProperty Name="Имя" ColumnName="Имя" />

@@ -21,6 +21,7 @@ namespace PredDiplom.DB
         public string Логин { get; set; }
         public string Пароль { get; set; }
         public int ИД_Тип_сотрудника { get; set; }
+        public string Почта { get; set; }
     
         public virtual Тип_сотрудники Тип_сотрудники { get; set; }
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PredDiplom.DB;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,26 @@ namespace PredDiplom
     /// </summary>
     public partial class MainWindow : Window
     {
+        public bazaEntities baza = new bazaEntities();
+
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void vxod_Click(object sender, RoutedEventArgs e)
+        {
+            var User = baza.Сотрудники.FirstOrDefault(i => (i.Логин == log.Text || i.Почта == log.Text) && i.Пароль == pass.Password);
+            int count = 0;
+
+            if (User != null)
+            {
+                MessageBox.Show("Вход выполнен!");
+            }
+            else
+            {
+                MessageBox.Show("Неверные данные!");
+            }
         }
     }
 }
